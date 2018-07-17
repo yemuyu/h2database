@@ -38,6 +38,7 @@ import org.h2.util.New;
 
 /**
  * A table engine that internally uses the MVStore.
+ * MVStore代表多版本存储.MVStore是一个持久化的、日志结构式的kv存储。
  */
 public class MVTableEngine implements TableEngine {
 
@@ -103,6 +104,10 @@ public class MVTableEngine implements TableEngine {
     }
 
     @Override
+    /**
+     * 创建表
+     * 一般的表都是由MVTableEngine的createTable创建
+     */
     public TableBase createTable(CreateTableData data) {
         Database db = data.session.getDatabase();
         Store store = init(db);
